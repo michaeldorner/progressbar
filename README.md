@@ -40,12 +40,12 @@ For long running processes, you might want to render from a 0% state.
 
 ```golang
 // Renders the bar right on construction
-bar := progress.NewOptions(100, OptionSetRenderBlankState(true))
+bar := progressbar.NewOptions(100, OptionSetRenderBlankState(true))
 ```
 
 Alternatively, when you want to delay rendering, but still want to render a 0% state
 ```golang
-bar := progress.NewOptions(100)
+bar := progressbar.NewOptions(100)
 
 // Render the current state, which is 0% in this case
 bar.RenderBlank()
@@ -60,11 +60,11 @@ for i := 0; i < 10; i++ {
 ### Use a custom writer
 The default writer is standard output (os.Stdout), but you can set it to whatever satisfies io.Writer.
 ```golang
-bar := NewOptions(
+bar := progressbar.NewOptions(
     10,
-    OptionSetTheme(Theme{Saucer: "#", SaucerPadding: "-", BarStart: ">", BarEnd: "<"}),
-    OptionSetWidth(10),
-    OptionSetWriter(&buf),
+    progressbar.OptionSetTheme(Theme{Saucer: "#", SaucerPadding: "-", BarStart: ">", BarEnd: "<"}),
+    progressbar.OptionSetWidth(10),
+    progressbar.OptionSetWriter(&buf),
 )
 
 bar.Add(5)
